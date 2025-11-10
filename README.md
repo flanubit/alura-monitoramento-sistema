@@ -5,14 +5,15 @@ Monitora os logs 'syslog' e 'auth.log', a conectividade de rede, o espaço de di
 
 # Arquivos _".service"_ e _".timer"_ para agendamento com o Systemd
 
-Copie o script "monitoramento-sistema.sh" para o diretório "/usr/local/bin/":
+Copie o script "monitoramento-sistema.sh" para o diretório "/usr/local/bin/" e atribua a permissão de execução:
 ~~~bash
 sudo cp monitoramento-sistema.sh /usr/local/bin/monitoramento-sistema.sh
+sudo chmod +x /usr/local/bin/monitoramento-sistema.sh
 ~~~
 
-Atribua a permissão de execução:
+Copie os arquivos _".service"_ e _".timer"_ para o diretório _"/etc/systemd/system/"_:
 ~~~bash
-sudo chmod +x /usr/local/bin/monitoramento-sistema.sh
+sudo cp monitoramento-sistema.service monitoramento-sistema.timer /etc/systemd/system/
 ~~~
 
 Reinicie o _"daemon"_ e habilite o serviço no arquivo _".timer"_:
@@ -26,7 +27,7 @@ Verifique se o serviço foi habilitado:
 sudo systemctl status monitoramento-sistema.timer
 ~~~
 
-Se o serviço estiver habilitado corretamento, terá uma saída similar a esta:
+Se o serviço estiver habilitado corretamente, você terá uma saída similar a esta:
 ~~~bash
 ● monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema
      Loaded: loaded (/etc/systemd/system/monitoramento-sistema.timer; enabled; preset: enabled)
@@ -37,12 +38,12 @@ Se o serviço estiver habilitado corretamento, terá uma saída similar a esta:
 Nov 09 21:53:58 shereka systemd[1]: Started monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema.
 ~~~
 
-Você pode verificar se a execução do script aconteceu:
+Você pode verificar se a execução do script aconteceu, usando:
 ~~~bash
 sudo journalctl -u monitoramento-sistema.service
 ~~~
 
-Se o script foi executado pelo menos uma vez você terá uma saída similar a esta:
+Se o script foi executado pelo menos uma vez você terá uma saída similar:
 ~~~bash
 Nov 10 00:00:15 shereka systemd[1]: Starting monitoramento-sistema.service - Script de Monitoramento de Sistema...
 Nov 10 00:00:18 shereka systemd[1]: monitoramento-sistema.service: Deactivated successfully.
