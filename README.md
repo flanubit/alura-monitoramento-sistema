@@ -10,9 +10,29 @@ Copie o script "monitoramento-sistema.sh" para o diretório "/usr/local/bin/":
 sudo cp monitoramento-sistema.sh /usr/local/bin/monitoramento-sistema.sh
 ~~~
 
-Atribui a permissão de execução:
+Atribua a permissão de execução:
 ~~~bash
 sudo chmod +x /usr/local/bin/monitoramento-sistema.sh
 ~~~
 
-[Em desenvolvimento...]
+Reinicie o _"daemon"_ e habilite o serviço no arquivo _".timer"_:
+~~~bash
+sudo systemctl daemon-reload
+sudo systemctl enable monitoramento-sistema.timer
+~~~
+
+Verifique se o serviço foi habilitado:
+~~~bash
+sudo systemctl status monitoramento-sistema.timer
+~~~
+
+Se o serviço estiver habilitado corretamento, terá uma saída similar a esta:
+~~~~
+● monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema
+     Loaded: loaded (/etc/systemd/system/monitoramento-sistema.timer; enabled; preset: enabled)
+     Active: active (waiting) since Sun 2025-11-09 21:53:58 -03; 2h 1min ago
+    Trigger: Mon 2025-11-10 00:00:00 -03; 4min 22s left
+   Triggers: ● monitoramento-sistema.service
+
+Nov 09 21:53:58 shereka systemd[1]: Started monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema.
+~~~~
