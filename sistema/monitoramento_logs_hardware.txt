@@ -1,0 +1,8 @@
+Sun Nov  9 22:09:27 -03 2025
+Memória RAM Total: 3.7Gi, Usada: 441Mi, Livre: 3.3Gi.
+Uso da CPU: 0%
+Operações de leitura e escrita:
+Device tps kB_read/s kB_wrtn/s
+sda 1.26 82.30 0.00
+sdb 0.15 7.87 0.00
+sdc 0.11 2.47 0.00

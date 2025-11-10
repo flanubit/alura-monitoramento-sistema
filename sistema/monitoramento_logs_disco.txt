@@ -1,0 +1,4 @@
+Sun Nov  9 22:09:27 -03 2025
+A unidade C:\ está com 91% de uso.
+Uso de disco no diretório principal:
+304K	/home/flanubit/
