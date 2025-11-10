@@ -28,7 +28,7 @@ sudo systemctl status monitoramento-sistema.timer
 ~~~
 
 Se o serviço estiver habilitado corretamente, você terá uma saída similar a esta:
-~~~bash
+~~~~
 ● monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema
      Loaded: loaded (/etc/systemd/system/monitoramento-sistema.timer; enabled; preset: enabled)
      Active: active (waiting) since Sun 2025-11-09 21:53:58 -03; 2h 1min ago
@@ -36,7 +36,7 @@ Se o serviço estiver habilitado corretamente, você terá uma saída similar a 
    Triggers: ● monitoramento-sistema.service
 
 Nov 09 21:53:58 shereka systemd[1]: Started monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema.
-~~~
+~~~~
 
 Você pode verificar se a execução do script aconteceu, usando:
 ~~~bash
@@ -44,8 +44,8 @@ sudo journalctl -u monitoramento-sistema.service
 ~~~
 
 Se o script foi executado pelo menos uma vez você terá uma saída similar:
-~~~bash
+~~~~
 Nov 10 00:00:15 shereka systemd[1]: Starting monitoramento-sistema.service - Script de Monitoramento de Sistema...
 Nov 10 00:00:18 shereka systemd[1]: monitoramento-sistema.service: Deactivated successfully.
 Nov 10 00:00:18 shereka systemd[1]: Finished monitoramento-sistema.service - Script de Monitoramento de Sistema.
-~~~
+~~~~
