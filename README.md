@@ -3,7 +3,7 @@
 Um projeto do curso de nivelamento DevOps da Alura.
 Monitora os logs 'syslog' e 'auth.log', a conectividade de rede, o espaço de disco, memória RAM e uso de CPU.
 
-# Arquivos ".service" e ".timer" p/ agendamento com o Systemd
+# Arquivos _".service"_ e _".timer"_ para agendamento com o Systemd
 
 Copie o script "monitoramento-sistema.sh" para o diretório "/usr/local/bin/":
 ~~~bash
@@ -27,7 +27,7 @@ sudo systemctl status monitoramento-sistema.timer
 ~~~
 
 Se o serviço estiver habilitado corretamento, terá uma saída similar a esta:
-~~~~
+~~~bash
 ● monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema
      Loaded: loaded (/etc/systemd/system/monitoramento-sistema.timer; enabled; preset: enabled)
      Active: active (waiting) since Sun 2025-11-09 21:53:58 -03; 2h 1min ago
@@ -35,4 +35,16 @@ Se o serviço estiver habilitado corretamento, terá uma saída similar a esta:
    Triggers: ● monitoramento-sistema.service
 
 Nov 09 21:53:58 shereka systemd[1]: Started monitoramento-sistema.timer - Timer para execução periódica do Monnitoramento de Sistema.
-~~~~
+~~~
+
+Você pode verificar se a execução do script aconteceu:
+~~~bash
+sudo journalctl -u monitoramento-sistema.service
+~~~
+
+Se o script foi executado pelo menos uma vez você terá uma saída similar a esta:
+~~~bash
+Nov 10 00:00:15 shereka systemd[1]: Starting monitoramento-sistema.service - Script de Monitoramento de Sistema...
+Nov 10 00:00:18 shereka systemd[1]: monitoramento-sistema.service: Deactivated successfully.
+Nov 10 00:00:18 shereka systemd[1]: Finished monitoramento-sistema.service - Script de Monitoramento de Sistema.
+~~~
